@@ -1,0 +1,387 @@
+/* 转场动画 */
+
+
+/* 淡入动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 淡出动画 */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+/* 淡入s */
+.fade-in {
+  animation: fadeIn 0.35s ease-in forwards;
+}
+
+/* 淡出s */
+.fade-out {
+  animation: fadeOut 0.2s ease-out forwards;
+}
+
+/* 全屏纯黑容器-用于淡出动画的过渡 */
+.black-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  z-index: 9996;
+}
+
+
+/* ------------------以下是入场动画的CSS ----------------------- */
+/* 入场动画容器 - 覆盖全屏的青色背景 */
+.animation-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  /* 纯黑背景 */
+  z-index: 9998;
+  /* 确保在最上层 */
+}
+
+/* 入场图片容器 - 用于居中显示图片 */
+.entry-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+}
+
+/* 入场图片样式 */
+.entry-image {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  top: calc(50% - 75px);
+  left: 50%;
+  /* 保持比例 */
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  /* 确保在最上层 */
+  object-fit: contain;
+  /* 确保完整显示 */
+}
+
+/* ------------------以下是入场动画光晕效果 */
+/**
+ * 光晕 CSS 效果 (Rare Cow 16)
+ * 作者: terenceodonoghue (https://uiverse.io/terenceodonoghue)
+ * 来源: https://uiverse.io/terenceodonoghue/rare-cow-16
+ * 许可: MIT License
+ */
+/* 以下开始原始代码（稍作修改） */
+/* From Uiverse.io by terenceodonoghue */
+.haloContainer {
+  position: absolute;
+  top: calc(50% - 75px);
+  left: 50%;
+  border-radius: 50%;
+  height: 170px;
+  width: 170px;
+
+  animation: rotate_3922 1.2s linear infinite;
+  transform: translate(-50%, -50%);
+  /* 精确居中 */
+
+  background-color: #9b59b6;
+  background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+  z-index: 9999;
+}
+
+.haloContainer span {
+  position: absolute;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: #9b59b6;
+  background-image: linear-gradient(#9b59b6, #84cdfa, #5ad1cd);
+}
+
+.haloContainer span:nth-of-type(1) {
+  filter: blur(3px);
+}
+
+.haloContainer span:nth-of-type(2) {
+  filter: blur(6px);
+}
+
+.haloContainer span:nth-of-type(3) {
+  filter: blur(15px);
+}
+
+.haloContainer span:nth-of-type(4) {
+  filter: blur(25px);
+}
+
+.haloContainer::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+
+  /* 半透明背景色 */
+  background-color: rgba(0, 0, 0, 0.3);
+  /* border: solid 5px #ffffff; */
+  border-radius: 50%;
+}
+
+@keyframes rotate_3922 {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+
+/* ------------------以上是入场动画光晕效果  */
+
+/* 广告词样式 */
+.slogan {
+  margin-top: calc(50% - 15px);
+  font-size: 20px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  /* 字母间距 */
+  background: linear-gradient(135deg, #00FFFF, #2592ff, #ff19ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  z-index: 9999;
+}
+
+/* 主内容区域样式 */
+.main-content {
+  text-align: center;
+}
+
+/* ---------------------以上是入场动画的CSS ---------------------------------- */
+
+/* 以下是启动钢琴的转场动画 */
+/* 全屏遮罩样式 */
+.neon-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg,
+      rgba(0, 255, 255, 0.1),
+      rgba(30, 144, 255, 0.1),
+      rgba(255, 0, 255, 0.1));
+  backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: backgroundShift 3s infinite alternate;
+  z-index: 10000;
+}
+
+/* 霓虹灯 */
+.neon-container {
+  position: relative;
+  width: 90%;
+  max-width: 400px;
+  height: 60%;
+  background: linear-gradient(45deg,
+      rgba(0, 255, 255, 0.2),
+      rgba(30, 144, 255, 0.2),
+      rgba(255, 0, 255, 0.2));
+  border-radius: 20px;
+  border: 2px solid transparent;
+  box-shadow:
+    0 0 30px #00FFFF,
+    0 0 60px #1E90FF,
+    0 0 90px #FF00FF,
+    inset 0 0 30px rgba(0, 255, 255, 0.3);
+  animation: neonPulse 2s infinite alternate;
+  overflow: hidden;
+  z-index: 10010;
+}
+
+/* 霓虹灯旋转动画 */
+.neon-container::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 45px;
+  right: 45px;
+  bottom: -10px;
+  background: linear-gradient(45deg, #00FFFF, #1E90FF, #FF00FF, #00FFFF);
+  border-radius: 25px;
+  animation: rotate 1s linear infinite;
+  opacity: 0.5;
+  /* 50% 透明度 */
+}
+
+.neon-container::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: rgba(10, 10, 20, 0.9);
+  border-radius: 18px;
+  z-index: -1;
+}
+
+/* 内容区域样式 */
+.neon-content {
+  position: relative;
+  z-index: 2;
+  padding: 30px;
+  text-align: center;
+  color: white;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 霓虹灯文本样式 */
+.neon-text {
+  font-size: 40px;
+  font-weight: bold;
+  transform: rotate(90deg);
+  /* 旋转90度 */
+}
+
+/* 粒子效果 */
+.particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* 粒子动画 */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #00FFFF;
+  border-radius: 50%;
+  animation: float 6s infinite linear;
+  box-shadow: 0 0 10px #1E90FF;
+}
+
+/* 霓虹灯脉冲动画 */
+@keyframes neonPulse {
+  0% {
+    box-shadow:
+      0 0 30px #00FFFF,
+      0 0 60px #1E90FF,
+      0 0 90px #FF00FF;
+  }
+
+  100% {
+    box-shadow:
+      0 0 40px #00FFFF,
+      0 0 80px #1E90FF,
+      0 0 120px #FF00FF;
+  }
+}
+
+/* 文本 glow 动画 */
+@keyframes textGlow {
+  0% {
+    text-shadow:
+      0 0 10px #00FFFF,
+      0 0 20px #1E90FF,
+      0 0 30px #FF00FF;
+  }
+
+  /* 文本 glow 动画 */
+  100% {
+    text-shadow:
+      0 0 15px #00FFFF,
+      0 0 30px #1E90FF,
+      0 0 45px #FF00FF;
+  }
+}
+
+/* 背景渐变动画 */
+@keyframes backgroundShift {
+  0% {
+    background: linear-gradient(135deg,
+        rgba(0, 255, 255, 0.1),
+        rgba(30, 144, 255, 0.1),
+        rgba(255, 0, 255, 0.1));
+  }
+
+  100% {
+    background: linear-gradient(315deg,
+        rgba(255, 0, 255, 0.1),
+        rgba(0, 255, 255, 0.1),
+        rgba(30, 144, 255, 0.1));
+  }
+}
+
+/* 旋转动画 */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 粒子动画 */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .neon-container {
+    width: 55%;
+    height: 55%;
+  }
+
+  .trigger-button {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+}
+
+/* ---------------------以上是启动钢琴的转场动画 ------------------------------*/

@@ -1,0 +1,898 @@
+.container {
+  width: 100%;
+  max-width: 1000px;
+  background: var(--bg);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(30, 144, 255, 0.2);
+  border: 1px solid var(--primary);
+}
+
+/* 标题区域样式 */
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+  border-bottom: 2px solid var(--primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 0, 255, 0.1), transparent);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+
+  100% {
+    left: 100%;
+  }
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  display: inline-block;
+  color: var(--text);
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent2), var(--accent1));
+  border-radius: 3px;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #444;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* 主内容区域样式 */
+.main-content {
+  display: flex;
+  min-height: 500px;
+}
+
+/* 悬浮标签 */
+.floating-label {
+  position: fixed;
+  top: 35px;
+  left: 0px;
+  width: 63px;
+  height: 43px;
+  background: linear-gradient(rgba(0, 255, 255, 0.195));
+  border: 2px solid var(--primary);
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 20px 20px 0;
+  font-weight: bold;
+  font-size: 14px;
+  text-align: center;
+  z-index: 80;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  /* 防止内容溢出 */
+}
+
+/* 悬浮标签内的图片 */
+.floating-label img {
+  max-width: 38px;
+  /* 限制图片最大宽度 */
+  max-height: 38px;
+  /* 限制图片最大高度 */
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  /* 保持图片比例 */
+  margin-left: 1px;
+  /* 图片和文字之间的间距 */
+}
+
+/* 滚动时，标签位置 */
+.floating-label.scrolled-down {
+  top: 0px;
+  border-radius: 0 0px 20px 0;
+}
+
+/* 全屏按钮样式 */
+#fullscreen-btn {
+  box-shadow: -7px 9px 20px 3px #1E90FF;
+  /* margin: 9px; */
+  max-width: 400px;
+}
+
+
+/* 选项卡导航 */
+.tab-nav {
+  display: flex;
+  background: linear-gradient(to right, rgba(30, 144, 255, 0.1), rgba(0, 255, 255, 0.1));
+  border-bottom: 1px solid var(--primary);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px;
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-btn.active {
+  background: rgba(30, 144, 255, 0.15);
+  color: var(--primary);
+}
+
+.tab-btn:not(.active):hover {
+  background: rgba(255, 0, 255, 0.1);
+  color: var(--accent2);
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+/* 选项卡内容 */
+.tab-content {
+  width: 100%;
+  display: none;
+  padding: 30px;
+  animation: fadeIn 0.5s ease;
+  /* 左右居中 */
+  margin: 0 auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 选项卡内容激活样式 */
+.tab-content.active {
+  display: block;
+}
+
+/* 按钮 */
+/* 按钮容器样式 */
+.button-container {
+  display: flex;
+  justify-content: center;
+  /* 水平居中 */
+  gap: 15px;
+  /* 按钮间距 */
+  margin: 15px;
+  /* 外边距 */
+  flex-wrap: wrap;
+  /* 允许换行 */
+}
+
+/* 按钮基础样式 */
+.button {
+  padding: 6px 20px;
+  /* 内边距 */
+  font-size: 1.1rem;
+  /* 字体大小 */
+  font-weight: bold;
+  /* 字体粗细 */
+  background: linear-gradient(45deg, var(--primary), var(--accent1));
+  /* 渐变背景 */
+  color: white;
+  /* 文字颜色 */
+  border: none;
+  /* 无边框 */
+  border-radius: 8px;
+  /* 圆角 */
+  cursor: pointer;
+  /* 鼠标指针样式 */
+  transition: all 0.3s ease;
+  /* 过渡动画 */
+  position: relative;
+  /* 相对定位 */
+  width: 40%;
+  /* 宽度为父元素的75% */
+  max-width: 60px;
+  /* 最大宽度限制 */
+  box-sizing: border-box;
+  /* 包含内边距和边框 */
+  overflow: hidden;
+  /* 隐藏溢出内容 */
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.4);
+  /* 阴影效果 */
+  text-transform: uppercase;
+  /* 文本大写 */
+  letter-spacing: 1px;
+  /* 字母间距 */
+  min-width: 60px;
+  /* 最小宽度 */
+  margin: 10px;
+}
+
+/* 按钮激活效果 */
+.trigger-btn:active {
+  transform: translateY(1px);
+  /* 下移效果 */
+  box-shadow: 0 3px 10px rgba(30, 144, 255, 0.4);
+  /* 减弱阴影 */
+}
+
+/* 按钮光效伪元素 */
+.trigger-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  /* 半透明白色 */
+  transform: rotate(45deg) translate(-20%, -100%);
+  /* 旋转和平移 */
+  transition: all 0.5s ease;
+  /* 过渡动画 */
+}
+
+/* 控件区域样式 */
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr));
+  gap: 25px;
+}
+
+.control-group {
+  background: rgba(30, 144, 255, 0.05);
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid rgba(30, 144, 255, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.control-group:hover {
+  border-color: var(--primary);
+  box-shadow: 0 5px 15px rgba(30, 144, 255, 0.1);
+}
+
+.control-title {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+}
+
+.control-title i {
+  margin-right: 10px;
+  font-size: 1.3rem;
+}
+
+.control-item {
+  margin-bottom: 20px;
+}
+
+.control-item:last-child {
+  margin-bottom: 0;
+}
+
+.control-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* 各种控件样式 */
+.slider-container {
+  display: flex;
+  align-items: center;
+}
+
+.slider-value {
+  margin-left: 10px;
+  min-width: 40px;
+  text-align: center;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  margin-bottom: 19px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 5px;
+  background: linear-gradient(to right, var(--primary), var(--secondary));
+  outline: none;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 22px;
+  width: 22px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.toggle-slider {
+  background-color: var(--accent1);
+}
+
+input:checked+.toggle-slider:before {
+  transform: translateX(30px);
+}
+
+select {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid rgba(30, 144, 255, 0.3);
+  background: white;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s;
+}
+
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(30, 144, 255, 0.2);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item input {
+  margin-right: 8px;
+}
+
+/* 歌谱区域样式 */
+.sheet-music {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  padding: 25px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  font-family: 'Courier New', monospace;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+
+/* ------------仿真可视化↓-------------- */
+
+.visualizer {
+  width: 100%;
+  height: 120px;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--glass-border);
+  border-bottom: 1px solid var(--primary);
+}
+
+.visualizer-bars {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  height: 100%;
+  padding: 0 1rem;
+}
+
+.bar {
+  width: 12px;
+  background: linear-gradient(to top, var(--primary), var(--secondary));
+  border-radius: 4px 4px 0 0;
+  animation: visualizer 1.5s ease-in-out infinite alternate;
+}
+
+.bar:nth-child(2n) {
+  animation-delay: 0.3s;
+  background: linear-gradient(to top, var(--accent), #ff6b9c);
+}
+
+.bar:nth-child(3n) {
+  animation-delay: 0.6s;
+}
+
+@keyframes visualizer {
+  0% {
+    height: 20%;
+  }
+
+  100% {
+    height: 90%;
+  }
+}
+
+/* ------------仿真可视化↑-------------- */
+
+/* 开始演奏按钮 - 美化版 */
+.play-section {
+  text-align: center;
+  padding: 30px 30px 10px;
+  position: relative;
+}
+
+.play-btn {
+  padding: 18px 55px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, var(--primary), var(--accent1));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 1;
+  box-shadow: 0 0 20px rgba(30, 144, 255, 0.6),
+    0 5px 15px rgba(30, 144, 255, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* 发光效果 - 默认显示 */
+.play-btn::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--primary), var(--accent1), var(--accent2), var(--primary));
+  z-index: -1;
+  border-radius: 50px;
+  opacity: 1;
+  background-size: 200% 200%;
+  animation: glowBorder 3s ease-in-out infinite;
+}
+
+/* 边框闪烁动画 */
+@keyframes glowBorder {
+  0% {
+    background-position: 0 0;
+  }
+
+  50% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0 0;
+  }
+}
+
+/* 添加脉冲动画使闪光效果持续闪烁 */
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+
+/* ------------------------------------------------------ */
+/* 
+      弹窗遮罩层样式
+      覆盖整个屏幕，提供半透明背景
+    */
+.modal {
+  display: none;
+  /* 默认隐藏 */
+  position: fixed;
+  /* 固定定位 */
+  margin: auto;
+  /* 垂直居中，水平居中 */
+  z-index: 1000;
+  /* 高z-index确保在最上层 */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* 全宽 */
+  height: 100%;
+  /* 全高 */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* 半透明黑色背景 */
+  animation: fadeIn 0.3s ease;
+  /* 淡入动画 */
+}
+
+/* 弹窗内容区域样式 */
+.modal-content {
+  background-color: var(--bg);
+  margin: auto;
+  /* 垂直居中，水平居中 */
+  padding: 0;
+  border-radius: 15px;
+  /* 圆角 */
+  width: 80%;
+  /* 宽度为视口的90% */
+  max-width: 500px;
+  /* 最大宽度限制 */
+  height: fit-content;
+  /* 根据内容自动调整高度 */
+  min-height: 350px;
+  /* 设置最小高度，确保弹窗不会太小 */
+  box-shadow: 0 5px 30px rgba(30, 144, 255, 0.5);
+  /* 发光阴影 */
+  border: 2px solid var(--primary);
+  /* 边框 */
+  overflow: hidden;
+  /* 隐藏溢出内容 */
+  animation: slideIn 0.3s ease;
+  /* 滑入动画 */
+  position: relative;
+  /* 相对定位 */
+}
+
+/* 弹窗头部样式 */
+.modal-header {
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(30, 144, 255, 0.1) 0%, rgba(0, 255, 255, 0.1) 100%);
+  /* 渐变背景 */
+  border-bottom: 1px solid var(--primary);
+  /* 底部边框 */
+  text-align: center;
+  /* 文本居中 */
+}
+
+/* 弹窗标题样式 */
+.modal-header h2 {
+  margin: 0;
+  /* 移除默认外边距 */
+  color: var(--text);
+  font-size: 1.5rem;
+  /* 字体大小 */
+}
+
+/* 弹窗主体内容区域 */
+.modal-body {
+  padding: 30px;
+  /* 内边距 */
+}
+
+/* 
+      纵向选项容器样式
+      用于垂直排列的选项列表
+    */
+.vertical-options {
+  display: flex;
+  flex-direction: column;
+  /* 垂直方向排列 */
+  gap: 15px;
+  /* 选项间距 */
+  align-items: center;
+  /* 水平居中 */
+}
+
+/* 
+      横向按钮容器样式
+      用于水平排列的按钮组
+    */
+.horizontal-buttons {
+  display: flex;
+  justify-content: center;
+  /* 水平居中 */
+  gap: 20px;
+  /* 按钮间距 */
+  margin-top: 20px;
+  /* 顶部外边距 */
+}
+
+/* 弹窗内按钮样式 */
+.modal-btn {
+  padding: 12px 25px;
+  /* 内边距 */
+  background: linear-gradient(45deg, var(--primary), var(--accent1));
+  /* 渐变背景 */
+  color: white;
+  /* 文字颜色 */
+  border: none;
+  /* 无边框 */
+  border-radius: 6px;
+  /* 圆角 */
+  cursor: pointer;
+  /* 鼠标指针样式 */
+  transition: all 0.3s ease;
+  /* 过渡动画 */
+  font-weight: bold;
+  /* 字体粗细 */
+  width: 80%;
+  /* 固定为父元素宽度的80% */
+}
+
+/* 
+      响应式设计
+      针对小屏幕设备的样式调整
+    */
+@media (max-width: 600px) {
+
+  /* 小屏幕下横向按钮改为垂直排列 */
+  .horizontal-buttons {
+    flex-direction: column;
+    /* 垂直方向排列 */
+    gap: 10px;
+    /* 减小间距 */
+  }
+
+  /* 小屏幕下弹窗按钮占满宽度 */
+  .modal-btn {
+    max-width: 100%;
+    /* 最大宽度为100% */
+  }
+
+  /* 小屏幕下弹窗内容调整 */
+  .modal-content {
+    width: 80%;
+    /* 宽度调整为95% */
+  }
+}
+
+/* 帮助提示容器 */
+.help-container {
+  position: relative;
+  width: 100%;
+  min-height: 400px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 帮助提示图标 */
+.help-icon {
+  position: absolute;
+  top: 25px;
+  right: 20px;
+  color: #007bff;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* 帮助提示样式 */
+.help-tooltip {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  background-color: #333;
+  color: white;
+  padding: 15px;
+  border-radius: 6px;
+  max-width: 300px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 1001;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+/* 帮助提示箭头 */
+.help-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  right: 20px;
+  width: 12px;
+  height: 12px;
+  background-color: #333;
+  transform: rotate(45deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.help-content {
+  margin-top: 40px;
+}
+
+/* 自定义单选按钮样式 */
+.custom-radio {
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.3s ease;
+}
+
+.custom-radio:hover {
+  color: var(--primary);
+}
+
+/* 隐藏原生单选按钮 */
+.custom-radio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* 自定义单选按钮指示器 */
+.radio-custom {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  background-color: #fff;
+  border: 2px solid rgba(30, 144, 255, 0.3);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+/* 选中状态的自定义指示器 */
+.custom-radio input:checked~.radio-custom {
+  background-color: #fff;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.2);
+}
+
+/* 选中状态的内部圆点 */
+.radio-custom::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--primary), var(--accent1));
+}
+
+/* 显示选中状态的内部圆点 */
+.custom-radio input:checked~.radio-custom::after {
+  display: block;
+  animation: pulse 0.3s ease;
+}
+
+/* 单选按钮标签 */
+.radio-label {
+  margin-left: 8px;
+  transition: color 0.3s ease;
+}
+
+/* 选中时标签颜色变化 */
+.custom-radio input:checked~.radio-label {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* 添加脉冲动画 */
+@keyframes pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0;
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}

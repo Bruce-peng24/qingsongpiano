@@ -1,0 +1,126 @@
+    /* 基础样式与赛博朋克主题 */
+    :root {
+      --primary: #1E90FF;
+      /* 道奇蓝 - 主色调 */
+      --accent1: #00FFFF;
+      /* 青色 - 强调色1 */
+      --accent2: #FF00FF;
+      /* 洋红 - 强调色2 */
+      --bg: #ffffff;
+      /* 白色背景 */
+      --text: #000000;
+      /* 黑色文字 */
+      --glow: 0 0 10px currentColor, 0 0 20px currentColor;
+      --secondary: #00d4ff;
+      --accent: #ff2d75;
+      --dark: #121826;
+      --light: #f0f4ff;
+      --glass: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+
+    }
+
+    * {
+
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 20px;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(30, 144, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 255, 0.05) 0%, transparent 20%);
+    }
+
+    /* ------------------------弹窗相关样式↑↑--------------------------- */
+    /* window全屏遮罩样式 */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      /* 半透明黑色背景 */
+      z-index: 9995;
+      /* 确保遮罩层在最上层 */
+      display: none;
+      /* 默认隐藏 */
+    }
+
+
+
+    /* 钢琴容器样式 */
+    .piano-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      z-index: 10000;
+    }
+
+
+
+
+    /* 页脚样式 */
+    footer {
+      margin-top: 50px;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      border-top: 1px solid #eee;
+    }
+
+    /* 二维码区域 */
+    footer .qr-section {
+      margin: 15px 0;
+    }
+
+    footer .qr-figure {
+      display: inline-block;
+      margin: 0 15px;
+    }
+
+    footer .qr-figure img {
+      max-width: 100px;
+      display: block;
+    }
+
+    footer .qr-figure figcaption {
+      font-size: 12px;
+    }
+
+    /* 导航链接 */
+    footer .nav-section {
+      margin: 15px 0;
+    }
+
+    footer .nav-group {
+      margin-bottom: 10px;
+    }
+
+    footer .nav-link {
+      margin: 0 10px;
+    }
+
+    /* 法律信息 */
+    footer .legal-section {
+      margin-top: 15px;
+    }
+
+    footer .legal-link {
+      margin: 0 5px;
+    }

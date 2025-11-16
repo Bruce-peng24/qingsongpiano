@@ -1,0 +1,253 @@
+/* ============================================
+   移动端钢琴模拟器 - 钢琴样式文件
+   ============================================
+
+   文件说明：
+   - 定义钢琴容器、琴键、全屏模式等样式
+   - 支持响应式设计，适配移动端和桌面端
+   - 包含横屏模式和全屏模式的特殊样式
+   - 优化性能，使用GPU加速和减少重绘
+
+   主要功能：
+   1. 钢琴容器直接显示，应用全屏样式
+   2. 白键和黑键的样式定义
+   3. 琴键按下时的视觉反馈
+   5. 性能优化措施
+   6. 钢琴已经是横向布局，无需旋转屏幕
+   ============================================
+   钢琴容器样式
+   ============================================ */
+
+/* 钢琴主容器 - 直接应用全屏样式 */
+.piano-container {
+  display: none;
+  /* 使用弹性布局显示 */
+  position: fixed;
+  /* 固定定位，脱离文档流 */
+  z-index: 600;
+  /* 最高层级，确保在最前面 */
+  width: 100vw;
+  /* 宽度占满视口 */
+  height: 100vh;
+  /* 高度占满视口 */
+  overflow-y: auto;
+  /* 垂直方向允许滚动 */
+  padding: 0;
+  /* 上下内边距 */
+  top: 0;
+  /* 顶部对齐 */
+  left: 0;
+  /* 左侧对齐 */
+  align-items: center;
+  /* 内容垂直居中 */
+  padding-left: 6px;
+  /* 左侧内边距 */
+  margin: 0;
+  /* 水平居中 */
+  justify-content: flex-start;
+  /* 内容左对齐 */
+  -webkit-overflow-scrolling: touch;
+  /* iOS平滑滚动效果 */
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  /* 全屏背景 */
+  overflow: hidden;
+  transform: translateZ(0);
+  /* 触发GPU硬件加速 */
+  will-change: transform;
+  /* 提示浏览器优化变换 */
+}
+
+/* ============================================
+   钢琴键盘容器
+   ============================================ */
+
+/* 钢琴键盘容器 - 包含所有琴键 */
+.piano-keys {
+  display: flex;
+  flex-direction: column;
+  /* 改为垂直排列，实现顺时针旋转90度 */
+  position: relative;
+  /* 相对定位，用于黑键的绝对定位 */
+  min-width: auto;
+  /* 自动最小宽度 */
+  width: 100%;
+  /* 宽度占满容器 */
+  height: 100%;
+  /* 高度占满容器 */
+  justify-content: center;
+  /* 琴键垂直居中 */
+  margin: 0 auto;
+  /* 水平居中 */
+  z-index: 1;
+  /* 确保键盘内容位于背景之上 */
+  align-items: flex-start;
+  /* 内容左对齐 */
+  /* 添加相对定位，确保黑键的绝对定位基于此容器 */
+  position: relative;
+}
+
+/* ============================================
+   白键样式
+   ============================================ */
+
+/* 白键 - 顺时针旋转90度后的样式 */
+.white-key {
+  width: 80%;
+  /* 宽度占满容器 */
+  height: calc(100% / 11);
+  /* 11个白键等分高度 */
+  background: linear-gradient(to right, #fff 0%, #f9f9f9 100%);
+  /* 渐变背景改为水平方向 */
+  border: 1px solid #ddd;
+  /* 边框样式 */
+  border-radius: 5px 0px 0px 5px;
+  /* 圆角改为右侧 */
+  z-index: 1;
+  /* 层级在白键层 */
+  display: flex;
+  /* 弹性布局 */
+  align-items: center;
+  /* 内容垂直居中 */
+  justify-content: flex-start;
+  /* 内容左对齐 */
+  padding-left: 10px;
+  /* 左侧内边距 */
+  font-weight: bold;
+  /* 字体加粗 */
+  color: #333;
+  /* 字体颜色 */
+  margin-bottom: 1px;
+  /* 键之间的间距 */
+  /* 确保白键有相对定位 */
+  position: relative;
+}
+
+/* ============================================
+   黑键样式
+   ============================================ */
+
+/* 黑键 - 垂直布局适配 */
+.black-key {
+  width: 48%;
+  /* 调整宽度 */
+  height: calc((100% / 9) * 0.7);
+  /* 调整为白键高度的70% */
+  background: linear-gradient(to right, #333 0%, #000 100%);
+  /* 深色渐变背景改为水平方向 */
+  border-radius: 3px 3px 3px 10px;
+  /* 圆角改为右侧 */
+  z-index: 2;
+  /* 层级在黑键层，覆盖在白键之上 */
+  display: flex;
+  /* 弹性布局 */
+  align-items: center;
+  /* 内容垂直居中 */
+  justify-content: flex-start;
+  /* 内容左对齐 */
+  padding-left: 10px;
+  /* 左侧内边距 */
+  color: #f0f0f0;
+  /* 浅色字体，提高可读性 */
+  font-size: 0.8rem;
+  /* 较小字体大小 */
+  position: absolute;
+  /* 绝对定位，用于精确定位在白键之间 */
+  /* 移除right: 0，由JS完全控制位置 */
+  /* 移除top: 0，由JS计算 */
+}
+
+/* ============================================
+   钢琴键激活状态
+   ============================================ */
+
+/* 钢琴键按下时的激活状态 - 通用效果 */
+.piano-key.active {
+  transform: translateX(-3px);
+  /* 改为向左移动3像素，模拟按下效果 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  /* 减小阴影，模拟按下状态 */
+}
+
+/* 白键激活状态 - 颜色变深 */
+.white-key.active {
+  background: linear-gradient(to right, #e0e0e0 0%, #d0d0d0 100%);
+  /* 深色渐变 */
+  z-index: 1;
+  /* 白键激活时仍然保持在黑键之下 */
+}
+
+/* 黑键激活状态 - 颜色变亮 */
+.black-key.active {
+  background: linear-gradient(to right, #000 0%, #222 100%);
+  /* 稍亮渐变 */
+  z-index: 2;
+  /* 黑键激活时保持在白键之上 */
+}
+
+.key-label {
+  font-size: 0.7rem;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  transform: rotate(90deg);
+  /* 标签顺时针旋转90度 */
+}
+
+/* 隐藏或显示键上的标签 */
+.piano-container.hide-labels .key-label {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(6px) rotate(90deg);
+  /* 标签隐藏时的移动方向改为水平，同时保持旋转 */
+}
+
+/* ============================================
+   钢琴容器显示/隐藏按钮样式
+   ============================================ */
+
+/* 钢琴容器隐藏状态 */
+.piano-container.hidden {
+  display: none !important;
+}
+
+/* 隐藏钢琴按钮 - 右上角 */
+.hide-piano-btn {
+  position: absolute;
+  /* 绝对定位，相对于钢琴容器 */
+  top: 15px;
+  /* 距离顶部15像素 */
+  right: 15px;
+  /* 距离右侧15像素 */
+  width: 30px;
+  /* 按钮宽度30像素 */
+  height: 30px;
+  /* 按钮高度30像素 */
+  color: white;
+  /* 白色文字 */
+  font-size: 24px;
+  /* 字体大小24像素 */
+  font-weight: bold;
+  /* 粗体文字 */
+  cursor: pointer;
+  /* 鼠标指针变为手型 */
+  z-index: 700;
+  /* 较高的层级，确保显示在最前面 */
+  display: flex;
+  /* 使用flex布局 */
+  justify-content: center;
+  /* 水平居中 */
+  align-items: center;
+  /* 垂直居中 */
+  background: transparent;
+  /* 背景透明 */
+  border: none;
+  /* 移除边框 */
+  box-shadow: none;
+  /* 移除阴影效果 */
+  padding: 0;
+  /* 移除内边距 */
+  margin: 0;
+  /* 移除外边距 */
+  outline: none;
+  /* 移除点击时的轮廓 */
+  text-shadow: none;
+  /* 移除文字阴影 */
+}
