@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>青松口袋钢琴</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/transitions.css">
+  <link rel="stylesheet" href="styles/piano.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127929;</text></svg>">
+
+  <link rel="stylesheet" href="styles/controlUI.css">
+</head>
+
+<body>
+  <!-- 入场动画容器 -->
+  <div class="animation-container fade-in" id="animation-container">
+    <!-- 图片显示容器 -->
+    <div class="entry-container" id="entry-container">
+      <!-- 入场图片 -->
+      <img src="images/logo300px.png" alt="入场图片" class="entry-image" id="entry-image">
+      <!-- 光晕效果 -->
+      <div class="haloContainer">
+        <!-- span标签是占位符，用于占位 -->
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="slogan">秒上手，超解压</div>
+    </div>
+  </div>
+
+  <!-- 入场动画容器后面显示全屏纯黑容器-用于淡出动画的过渡 -->
+  <div class="black-background" id="black-background"></div>
+
+  <!-- 音域选择窗口 -->
+  <div id="window-selector" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>&#127802;欢迎&#127802;</h2>
+        <!-- 花的实体码是 &#127802; -->
+      </div>
+      <div class="modal-body">
+        <p style="text-align: center; margin-bottom: 20px;">请选择钢琴音色</p>
+
+
+        <div class="vertical-options">
+
+          <button id="audio-mode" class="modal-btn" type="button">
+            <div class="option-item">流行音域</div>
+          </button>
+          <button id="golden-mode" class="modal-btn" type="button">
+            <div class="mode-title">黄金音域</div>
+          </button>
+          <button id="oscillator-mode" class="modal-btn" type="button">
+            <div class="mode-title">电音</div>
+            <!-- 电音就是振动器 -->
+          </button>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+  <!-- 设备提示窗口 -->
+  <div id="device-warning" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>设备提示</h2>
+      </div>
+      <div class="modal-body">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <div style="font-size: 3rem; margin-bottom: 15px;"> &#x1F4F1;
+          </div>
+          <p style="font-size: 1.1rem; line-height: 1.6;">
+            青松口袋钢琴专为移动设备优化设计<br>
+            请使用手机或平板访问以获得最佳体验
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ===================================================== -->
+
+
+
+
+
+  <!-- ===================================================== -->
+  <!-- ===================================================== -->
+  <!-- ===================================================== -->
+  <!-- 短暂提示框 -->
+  <div id="toast-notification" class="modal" style="display: none;">
+    <div class="modal-content" style="max-width: 300px; min-height: auto;">
+      <div class="modal-body">
+        <p style="text-align: center; margin: 0; font-size: 1.1rem;" id="toast-message"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 霓虹灯转场动画 -->
+  <div class="neon-overlay" id="neon-overlay">
+    <div class="neon-container">
+      <div class="particles" id="particles"></div>
+      <div class="neon-content">
+        <div class="neon-text">青松</div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
+  <div class="container">
+    <div class="header">
+
+      <div class="visualizer">
+        <div class="visualizer-bars">
+          <div class="bar" style="height: 40%;"></div>
+          <div class="bar" style="height: 70%;"></div>
+          <div class="bar" style="height: 30%;"></div>
+          <div class="bar" style="height: 90%;"></div>
+          <div class="bar" style="height: 50%;"></div>
+          <div class="bar" style="height: 80%;"></div>
+          <div class="bar" style="height: 35%;"></div>
+          <div class="bar" style="height: 65%;"></div>
+          <div class="bar" style="height: 45%;"></div>
+          <div class="bar" style="height: 75%;"></div>
+        </div>
+      </div>
+
+      <h1>青松钢琴</h1>
+      <p class="subtitle">秒上手，超解压</p>
+
+      <div class="play-section">
+        <button class="play-btn" id="show-piano-btn">开始演奏</button>
+      </div> <!-- 按钮容器 -->
+      <div class="button-container">
+        <button class="button" id="fullscreen-btn">全屏</button>
+      </div>
+    </div>
+
+    <!-- 悬浮标签 -->
+    <div class="floating-label">
+      青松<img src="images/logo300px.png" alt="logo">
+    </div>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="controls">设置</button>
+      <button class="tab-btn" data-tab="sheet-music">曲谱</button>
+    </div>
+
+
+    <!-- ------主内容区-------- -->
+    <div class="main-content">
+      <!-- 控件选项卡 -->
+      <div class="tab-content active" id="controls">
+        <!-- -------------- -->
+        <!-- 钢琴容器 -->
+        <div class="piano-container" id="piano-container">
+          <button class="hide-piano-btn" id="hide-piano-btn">^</button>
+          <div class="piano-keys" id="piano-keys">
+            <!-- 琴键由JavaScript动态生成 -->
+          </div>
+        </div>
+
+
+        <!-- -------------- -->
+        <!-- 控制面板 -->
+        <div class="controls-grid">
+
+
+
+
+
+
+          <!-- 卡片1 -->
+          <div class="control-group">
+            <h3 class="control-title">基础设置</h3>
+
+            <!-- 蓝色问号帮助图标 -->
+            <div class="help-icon" onclick="toggleHelp()">?</div>
+            <div class="help-tooltip" id="helpTooltip">
+              <p>基础设置帮助：</p>
+              <ul>
+                <li>全屏：切换到全屏模式</li>
+                <li>钢琴音量：调节钢琴声音大小</li>
+                <li>背景音乐音量：调节背景音乐声音大小</li>
+                <li>音色切换：选择不同的音色模式</li>
+              </ul>
+            </div>
+
+
+
+            <!-- 音量控制 -->
+            <div class="control-item">
+
+
+              <div class="control-item">
+                <label class="control-label">音色切换</label>
+                <select id="timbre-selector">
+                  <option value="audio">流行音域</option>
+                  <option value="golden">黄金音域</option>
+                  <option value="oscillator">电音</option>
+                  <!-- 电音就是振荡器 -->
+                </select>
+
+                <label class="control-label">钢琴音量</label>
+                <div class="slider-container">
+                  <input type="range" id="volume" min="0" max="100" value="75" class="slider">
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <h3 class="control-title">开关控制</h3>
+            <div class="control-item">
+
+
+
+
+              <label style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>钢琴标签</span>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="label-toggle-switch" checked>
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+
+              <label style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>钢琴特效（即将上线）</span>
+                <div class="toggle-switch">
+                  <input type="checkbox" checked>
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+
+
+
+
+          <div class="control-group">
+            <h3 class="control-title">背景音乐</h3>
+            <div class="control-item">
+              <!-- 当前播放曲目显示 -->
+              <div class="music-info">
+                <div class="music-title" id="current-music-title">轻松旋律</div>
+              </div>
+
+              <!-- 音乐控制按钮 -->
+              <div>
+                <button id="music-prev-btn" class="button">＜</button>
+                <button id="music-play-pause-btn" class="button">▶</button>
+                <button id="music-next-btn" class="button">＞</button>
+              </div>
+
+              <!-- 音量控制 -->
+              <label class="control-label">背景音乐音量</label>
+              <div class="slider-container">
+                <input type="range" id="background-music-volume" min="0" max="100" value="40" class="slider">
+              </div>
+            </div>
+          </div>
+
+          <div class="control-group" id="oscillator-advanced-controls">
+            <h3 class="control-title">电音设置</h3>
+            <div class="control-item">
+              <label class="control-label">波形类型</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="waveform" value="triangle" checked>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">三角波</span>
+                </label>
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="waveform" value="square">
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">方波</span>
+                </label>
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="waveform" value="sawtooth">
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">锯齿波</span>
+                </label>
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="waveform" value="sine">
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">正弦波</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">音调</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="pitch" value="low">
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">低音</span>
+                </label>
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="pitch" value="medium" checked>
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">中音</span>
+                </label>
+                <label class="checkbox-item custom-radio">
+                  <input type="radio" name="pitch" value="high">
+                  <span class="radio-custom"></span>
+                  <span class="radio-label">高音</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="control-item">
+              <label style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>长按持续发音</span>
+                <div class="toggle-switch">
+                  <input type="checkbox" id="sustain-toggle">
+                  <span class="toggle-slider"></span>
+                </div>
+              </label>
+            </div>
+
+            <div class="control-item">
+              <label class="control-label">延音时长</label>
+              <div class="slider-container">
+                <input type="range" id="oscillator-duration" min="0" max="100" value="50" class="slider">
+              </div>
+            </div>
+          </div>
+
+
+          <div class="control-group">
+            <h3 class="control-title">钢琴特效设置（即将上线）</h3>
+
+            <div class="control-item">
+              <label class="control-label">交互特效</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" checked> **
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox"> **
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox"> **
+                </label>
+              </div>
+              <label class="control-label">状态特效</label>
+              <div class="checkbox-group">
+                <label class="checkbox-item">
+                  <input type="checkbox" checked> **
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox"> **
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox"> **
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- 歌谱选项卡 -->
+      <div class="tab-content" id="sheet-music">
+        <div class="sheet-music">
+          <pre>
+曲谱信息:
+标题: XX
+调式: XX
+节拍: XX
+速度: XX
+
+[前奏]
+C   G   Am  Em
+F   C   F   G
+
+[主歌]
+C       G       Am      Em
+
+F       C       F       G
+
+
+C       G       Am      Em
+
+F       C       F       G
+
+
+[副歌]
+C   G   Am  Em
+
+F   C   F   G
+
+
+C   G   Am  Em
+
+F   C   F   G7
+
+
+[桥段]
+Am      F       C       G
+
+Am      F       C       G7
+
+
+[尾声]
+C   G   Am  Em
+F   C   F   G
+C
+                    </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ===================================================== -->
+  <!-- 全屏遮罩层 -->
+  <div id="overlay" class="overlay"></div>
+
+  <!-- 脚本加载顺序 -->
+  <script src="js/audio-config.js"></script>
+  <script src="js/audio-context.js"></script>
+  <script src="js/audio-effects.js"></script>
+  <script src="js/oscillator.js"></script>
+  <script src="js/audio-loader.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/audio-playback-controller.js"></script>
+  <script src="js/audio-core.js"></script>
+  <script src="js/audio-fallback.js"></script>
+  <script src="js/piano.js"></script>
+  <script src="js/deviceEnv.js"></script>
+  <script src="js/mode-selector.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/control.js"></script>
+
+  <script>
+    // 安全的初始化逻辑
+    document.addEventListener('DOMContentLoaded', function () {
+      console.log('DOM加载完成，开始初始化应用');
+      // 确保PianoApp类已定义
+      if (typeof window.PianoApp !== 'undefined') {
+        new window.PianoApp(); // 实例化 PianoApp
+      } else {
+        console.error('PianoApp类未定义，请检查main.js是否正确加载');
+      }
+    });
+
+    // 全局错误处理
+    window.addEventListener('error', function (e) {
+      console.error('全局错误:', e.error);
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+  <footer>
+    <!-- 品牌标识 -->
+    <section aria-label="品牌信息">
+      <h3>青松口袋钢琴</h3>
+      <p>专为移动端设计的在线钢琴模拟器。</p>
+    </section>
+
+    <!-- 二维码区域 -->
+    <section aria-label="二维码" class="qr-section">
+      <figure class="qr-figure">
+        <img src="images/share-qr.png" alt="分享网站二维码">
+        <figcaption>分享网站</figcaption>
+      </figure>
+      <figure class="qr-figure">
+        <img src="images/social-media-qr.png" alt="媒体账号二维码">
+        <figcaption>关注我们</figcaption>
+      </figure>
+    </section>
+
+    <!-- 导航链接（分组） -->
+    <nav aria-label="网站导航" class="nav-section">
+      <div class="nav-group">
+        <a href="faq.html" class="nav-link">常见问题</a>
+        <a href="https://wj.qq.com/s2/24843872/5c79/" class="nav-link">反馈与建议</a>
+        <a href="changelog.html" class="nav-link">更新日志</a>
+      </div>
+      <div class="nav-group">
+        <a href="about.html" class="nav-link">关于与鸣谢</a>
+        <a href="features.html" class="nav-link">功能优势</a>
+        <span>合作联系微信号：pzhhh6666</span>
+      </div>
+    </nav>
+
+    <!-- 法律链接与版权 -->
+    <section aria-label="法律信息" class="legal-section">
+      <p>&copy; 2025 青松钢琴 版权所有</p>
+      <p>
+        <a href="disclaimer.html" class="legal-link">免责声明</a> |
+        <a href="terms.html" class="legal-link">服务协议</a> |
+        <a href="privacy.html" class="legal-link">隐私政策</a>
+      </p>
+      <!-- 隐私政策包含Cookie政策 -->
+    </section>
+  </footer>
+
+  <!-- 引入音乐播放器模块 -->
+  <script src="js/music-player.js"></script>
+
+  <script>
+    // 初始化音乐播放器
+    function initMusicPlayer() {
+      // 检查DOM元素是否已存在
+      const playPauseBtn = document.getElementById('music-play-pause-btn');
+      if (!playPauseBtn) {
+        console.warn('音乐播放器: DOM元素尚未加载，延迟初始化');
+        setTimeout(initMusicPlayer, 100);
+        return;
+      }
+
+      if (typeof MusicPlayer !== 'undefined') {
+        const musicPlayer = new MusicPlayer();
+        musicPlayer.init();
+        console.info('主页面: 音乐播放器初始化完成');
+      }
+    }
+
+    // 页面加载完成后初始化
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMusicPlayer);
+    } else {
+      // DOM已经加载完成
+      initMusicPlayer();
+    }
+  </script>
+
+</body>
+
+</html>

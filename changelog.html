@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>更新日志 - 青松口袋钢琴</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/transitions.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127929;</text></svg>">
+    <style>
+        .changelog-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+            text-shadow: var(--glow);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .version-timeline {
+            position: relative;
+            margin: 40px 0;
+        }
+
+        .version-timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent1));
+        }
+
+        .version-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 60px;
+        }
+
+        .version-badge {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: var(--glow);
+        }
+
+        .version-content {
+            background: var(--glass);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .version-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .version-date {
+            color: var(--text);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .version-tag {
+            background: var(--accent1);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .version-description {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .update-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .update-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .update-item:last-child {
+            border-bottom: none;
+        }
+
+        .update-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        .update-type-new {
+            color: #4CAF50;
+        }
+
+        .update-type-improved {
+            color: #2196F3;
+        }
+
+        .update-type-fixed {
+            color: #FF9800;
+        }
+
+        .update-text {
+            flex: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 24px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: var(--accent1);
+            transform: translateY(-2px);
+            box-shadow: var(--glow);
+        }
+
+        @media (max-width: 768px) {
+            .changelog-container {
+                padding: 20px 15px;
+            }
+
+            .version-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .version-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="changelog-container">
+        <div class="header">
+            <h1>📋 更新日志</h1>
+            <p>青松口袋钢琴的版本更新记录</p>
+        </div>
+
+        <div class="version-timeline">
+            <!-- Beta 1.1 版本 -->
+            <div class="version-item">
+                <div class="version-badge">1.1</div>
+                <div class="version-content">
+                    <div class="version-header">
+                        <h2 class="version-title">Beta 1.1 - 即将上线</h2>
+                        <span class="version-tag">即将发布</span>
+                    </div>
+                    <div class="version-description">
+                        优化用户体验，增强功能稳定性，为正式版发布做准备
+                    </div>
+                    <ul class="update-list">
+                        <li class="update-item">
+                            <span class="update-icon update-type-improved">🎹</span>
+                            <span class="update-text">增强了钢琴键盘的触控响应和动画效果</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-improved">🎨</span>
+                            <span class="update-text">优化了UI布局，提升了整体视觉体验和操作流畅度</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🌟</span>
+                            <span class="update-text">新增了多种动画特效，增强了交互的视觉反馈</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-improved">📜</span>
+                            <span class="update-text">更新了曲谱库，增加了更多经典曲目和练习曲</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-fixed">🐛</span>
+                            <span class="update-text">修复了移动端浏览器上的音频播放兼容性问题</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-fixed">📱</span>
+                            <span class="update-text">优化了移动设备的界面适配和触摸交互</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Beta 1.0 版本 -->
+            <div class="version-item">
+                <div class="version-badge">1.0</div>
+                <div class="version-content">
+                    <div class="version-header">
+                        <h2 class="version-title">Beta 1.0 - 当前版本</h2>
+                        <span class="version-date">2025年11月</span>
+                    </div>
+                    <div class="version-description">
+                        青松口袋钢琴的首次公开测试版本，包含核心功能
+                    </div>
+                    <ul class="update-list">
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🎛️</span>
+                            <span class="update-text">添加了多种波形类型选择（三角波、方波、锯齿波、正弦波）</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🎚️</span>
+                            <span class="update-text">实现了音调调节功能（低音、中音、高音）</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🔊</span>
+                            <span class="update-text">集成了背景音乐播放器功能</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">📱</span>
+                            <span class="update-text">针对移动设备优化的响应式界面设计</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🎨</span>
+                            <span class="update-text">添加了霓虹灯效果和现代化的UI设计</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Alpha 版本 -->
+            <div class="version-item">
+                <div class="version-badge">α</div>
+                <div class="version-content">
+                    <div class="version-header">
+                        <h2 class="version-title">Alpha - 内部测试</h2>
+                        <span class="version-date">2025年11月</span>
+                    </div>
+                    <div class="version-description">
+                        项目初始开发阶段，功能原型验证
+                    </div>
+                    <ul class="update-list">
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">💡</span>
+                            <span class="update-text">项目概念设计和原型开发</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🎹</span>
+                            <span class="update-text">基础钢琴键盘功能实现</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">🔊</span>
+                            <span class="update-text">Web Audio API集成和音频引擎开发</span>
+                        </li>
+                        <li class="update-item">
+                            <span class="update-icon update-type-new">📐</span>
+                            <span class="update-text">响应式布局和移动端适配框架搭建</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← 返回主页</a>
+    </div>
+
+    <footer>
+        <div class="nav-section">
+            <div class="nav-group">
+                <a href="faq.html" class="nav-link">常见问题</a>
+                <a href="https://wj.qq.com/s2/24843872/5c79/" class="nav-link">反馈与建议</a>
+                <a href="changelog.html" class="nav-link">更新日志</a>
+            </div>
+            <div class="nav-group">
+                <a href="about.html" class="nav-link">关于与鸣谢</a>
+                <a href="features.html" class="nav-link">功能优势</a>
+                <span>合作联系微信号：pzhhh6666</span>
+            </div>
+        </div>
+
+        <section aria-label="法律信息" class="legal-section">
+            <p>&copy; 2025 青松钢琴 版权所有</p>
+            <p>
+                <a href="disclaimer.html" class="legal-link">免责声明</a> |
+                <a href="terms.html" class="legal-link">服务协议</a> |
+                <a href="privacy.html" class="legal-link">隐私政策</a>
+            </p>
+        </section>
+    </footer>
+</body>
+
+</html>

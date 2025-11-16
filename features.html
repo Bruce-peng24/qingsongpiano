@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>青松口袋钢琴 - 功能优势</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/transitions.css">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#127929;</text></svg>">
+  <style>
+    .features-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+      text-shadow: var(--glow);
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: var(--text);
+      opacity: 0.8;
+    }
+
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 30px 0;
+      background: var(--glass);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 20px;
+      text-align: center;
+      border: 1px solid var(--glass-border);
+    }
+
+    .comparison-table th {
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .comparison-table tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-advantage {
+      color: #00d4ff;
+      font-weight: bold;
+    }
+
+    .feature-disadvantage {
+      color: #ff2d75;
+      opacity: 0.7;
+    }
+
+    .highlight-section {
+      background: linear-gradient(135deg, var(--primary), var(--accent1));
+      padding: 30px;
+      border-radius: 15px;
+      margin: 40px 0;
+      text-align: center;
+      color: white;
+    }
+
+    .highlight-section h2 {
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 30px;
+    }
+
+    .cta-button {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .primary-button {
+      background: var(--accent1);
+      color: var(--dark);
+    }
+
+    .secondary-button {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
+    }
+
+    .feature-card {
+      background: #1E90FF;
+      padding: 25px;
+      border-radius: 12px;
+      border: 1px solid var(--glass-border);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .feature-card:hover::before {
+      left: 100%;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      border-color: var(--accent1);
+    }
+
+    .feature-card h3 {
+      color: var(--accent1);
+      margin-bottom: 15px;
+      font-size: 1.3rem;
+      text-shadow: var(--glow);
+    }
+
+    .feature-card p {
+      color: var(--text);
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="features-container">
+    <div class="header">
+      <h1>🎹 青松口袋钢琴</h1>
+      <p>为什么选择我们的移动钢琴模拟器？</p>
+    </div>
+
+    <div class="highlight-section">
+      <h2>秒上手，超解压</h2>
+      <p>专为移动设备优化的钢琴模拟器，让音乐创作触手可及</p>
+    </div>
+
+    <h2>功能差异快速概览</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>功能</th>
+          <th>青松口袋钢琴</th>
+          <th>其他钢琴应用</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>软件安装</strong></td>
+          <td class="feature-advantage">无需安装，浏览器直接使用</td>
+          <td class="feature-disadvantage">需要下载安装包</td>
+        </tr>
+        <tr>
+          <td><strong>处理位置</strong></td>
+          <td class="feature-advantage">在浏览器中本地处理</td>
+          <td class="feature-disadvantage">依赖服务器处理</td>
+        </tr>
+        <tr>
+          <td><strong>隐私和安全</strong></td>
+          <td class="feature-advantage">音频数据保留在您的设备上</td>
+          <td class="feature-disadvantage">数据可能上传到第三方服务器</td>
+        </tr>
+        <tr>
+          <td><strong>处理速度</strong></td>
+          <td class="feature-advantage">即时响应（无需网络传输）</td>
+          <td class="feature-disadvantage">受网络延迟影响</td>
+        </tr>
+        <tr>
+          <td><strong>需要注册</strong></td>
+          <td class="feature-advantage">不需要</td>
+          <td class="feature-disadvantage">大文件或高级功能常需要</td>
+        </tr>
+        <tr>
+          <td><strong>离线工作</strong></td>
+          <td class="feature-advantage">是（页面加载后即可离线使用）</td>
+          <td class="feature-disadvantage">需要持续网络连接</td>
+        </tr>
+        <tr>
+          <td><strong>费用</strong></td>
+          <td class="feature-advantage">完全免费</td>
+          <td class="feature-disadvantage">免费增值（付费解锁功能）</td>
+        </tr>
+        <tr>
+          <td><strong>广告体验</strong></td>
+          <td class="feature-advantage">完全无广告干扰</td>
+          <td class="feature-disadvantage">常包含广告或推广内容</td>
+        </tr>
+        <tr>
+          <td><strong>更新方式</strong></td>
+          <td class="feature-advantage">无缝自动更新</td>
+          <td class="feature-disadvantage">需要手动下载更新包</td>
+        </tr>
+        <tr>
+          <td><strong>资源占用</strong></td>
+          <td class="feature-advantage">极低资源消耗</td>
+          <td class="feature-disadvantage">占用较多存储和内存</td>
+        </tr>
+        <tr>
+          <td><strong>试用成本</strong></td>
+          <td class="feature-advantage">零成本立即体验</td>
+          <td class="feature-disadvantage">可能限制试用功能</td>
+        </tr>
+        <tr>
+          <td><strong>移动优化</strong></td>
+          <td class="feature-advantage">专为触屏设备设计</td>
+          <td class="feature-disadvantage">多为桌面端移植</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="feature-list">
+      <div class="feature-card">
+        <h3>🎵 高品质音色</h3>
+        <p>采用真实钢琴采样，提供纯净的音乐体验，支持流行音域和电音模式</p>
+      </div>
+      <div class="feature-card">
+        <h3>📱 移动优先</h3>
+        <p>专为手机和平板优化，触控体验流畅自然，完美适配各种屏幕尺寸</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔒 隐私保护</h3>
+        <p>所有音频处理都在本地完成，保护您的隐私安全，数据永不外传</p>
+      </div>
+      <div class="feature-card">
+        <h3>⚡ 即时响应</h3>
+        <p>无需等待加载，点击即弹，享受即时音乐创作，零延迟体验</p>
+      </div>
+      <div class="feature-card">
+        <h3>🚫 无广告干扰</h3>
+        <p>纯净的音乐环境，没有任何广告打扰您的创作灵感</p>
+      </div>
+      <div class="feature-card">
+        <h3>🔄 无缝更新</h3>
+        <p>自动获取最新功能，无需手动下载，始终保持最佳体验</p>
+      </div>
+      <div class="feature-card">
+        <h3>💾 低资源占用</h3>
+        <p>极低的内存和存储消耗，即使在老旧设备上也能流畅运行</p>
+      </div>
+      <div class="feature-card">
+        <h3>💰 零试用成本</h3>
+        <p>完全免费使用，所有功能开放，无需付费解锁任何限制</p>
+      </div>
+    </div>
+
+    <div class="highlight-section">
+      <h2>🎯 为什么选择青松钢琴？</h2>
+      <p>我们专注于为移动用户提供最纯粹、最便捷的钢琴体验</p>
+      <div style="margin-top: 20px; font-size: 1.1rem;">
+        <p>✅ <strong>隐私安全</strong> - 您的音乐数据永远留在本地设备</p>
+        <p>✅ <strong>即时可用</strong> - 无需下载安装，打开即用</p>
+        <p>✅ <strong>完全免费</strong> - 无广告、无内购、无功能限制</p>
+        <p>✅ <strong>移动优化</strong> - 专为触屏设备设计的交互体验</p>
+      </div>
+    </div>
+
+    <div class="cta-buttons">
+      <a href="index.html" class="cta-button primary-button">🎹 立即体验</a>
+      <a href="about.html" class="cta-button secondary-button">ℹ️ 了解更多</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="nav-section">
+      <div class="nav-group">
+        <a href="index.html" class="nav-link">首页</a>
+        <a href="about.html" class="nav-link">关于</a>
+        <a href="faq.html" class="nav-link">常见问题</a>
+        <a href="privacy.html" class="nav-link">隐私政策</a>
+        <a href="terms.html" class="nav-link">使用条款</a>
+      </div>
+    </div>
+    <div class="legal-section">
+      <p>&copy; 2024 青松口袋钢琴. 保留所有权利.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>常见问题 - 青松口袋钢琴</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-section {
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .faq-answer {
+            padding: 15px 20px;
+            background: white;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+        }
+
+        h1 {
+            color: #2c5530;
+        }
+
+        h2 {
+            color: #4a7c59;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 10px;
+        }
+
+        .back-btn {
+            background: #4a7c59;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .tip {
+            background: #e7f3ff;
+            padding: 10px;
+            border-left: 4px solid #1890ff;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>常见问题解答</h1>
+        <p>青松口袋钢琴使用指南</p>
+    </div>
+
+    <div class="faq-section">
+        <h2>功能使用类问题</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">1. 如何开始使用青松口袋钢琴？</div>
+            <div class="faq-answer">
+                <p>使用步骤：</p>
+                <ol>
+                    <li>打开青松口袋钢琴网站</li>
+                    <li>等待入场动画结束后，选择您喜欢的音色模式（流行音域或电音）</li>
+                    <li>点击"开始演奏"按钮</li>
+                    <li>点击屏幕上的琴键开始演奏</li>
+                </ol>
+                <div class="tip">提示：建议使用手机或平板设备访问，以获得最佳体验。</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">2. 如何调节钢琴音量？</div>
+            <div class="faq-answer">
+                <p>调节方法：</p>
+                <ol>
+                    <li>点击"设置"选项卡</li>
+                    <li>在"音量控制"区域找到"钢琴音量"滑块</li>
+                    <li>左右拖动滑块调节音量大小</li>
+                </ol>
+                <div class="tip">提示：音量范围从0（静音）到100（最大音量）。</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">3. 如何切换音色模式？</div>
+            <div class="faq-answer">
+                <p>切换方法：</p>
+                <ol>
+                    <li>点击"设置"选项卡</li>
+                    <li>在"基础设置"区域找到"音色切换"下拉菜单</li>
+                    <li>选择"流行音域"或"电音"模式</li>
+                </ol>
+                <p><strong>模式说明：</strong></p>
+                <ul>
+                    <li><strong>流行音域：</strong>传统钢琴音色，适合演奏流行音乐</li>
+                    <li><strong>电音：</strong>电子合成器音色，可调节波形和音调</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">4. 如何开启/关闭背景音乐？</div>
+            <div class="faq-answer">
+                <p>操作方法：</p>
+                <ol>
+                    <li>点击"设置"选项卡</li>
+                    <li>在"开关控制"区域找到"背景音乐"开关</li>
+                    <li>点击开关按钮开启或关闭背景音乐</li>
+                </ol>
+                <div class="tip">提示：背景音乐音量可以在"音量控制"区域单独调节。</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">5. 如何隐藏/显示钢琴标签？</div>
+            <div class="faq-answer">
+                <p>操作方法：</p>
+                <ol>
+                    <li>点击"设置"选项卡</li>
+                    <li>在"开关控制"区域找到"钢琴标签"开关</li>
+                    <li>点击开关按钮显示或隐藏琴键上的音名标签</li>
+                </ol>
+                <div class="tip">提示：隐藏标签可以获得更简洁的界面，适合熟悉琴键位置的用户。</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2>技术支持类问题</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">6. 音频有延迟怎么办？</div>
+            <div class="faq-answer">
+                <p>音频延迟的可能原因和解决方法：</p>
+                <ul>
+                    <li><strong>设备性能：</strong>关闭其他应用程序，释放设备资源</li>
+                    <li><strong>浏览器问题：</strong>尝试使用最新版本的Chrome、Safari或Edge浏览器</li>
+                    <li><strong>网络环境：</strong>确保网络连接稳定</li>
+                    <li><strong>浏览器设置：</strong>检查浏览器是否启用了硬件加速</li>
+                </ul>
+                <div class="tip">提示：青松口袋钢琴专为移动设备优化，在手机上通常能获得最佳性能。</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">7. 琴键没有声音怎么办？</div>
+            <div class="faq-answer">
+                <p>排查步骤：</p>
+                <ol>
+                    <li>检查设备音量是否开启</li>
+                    <li>确认"钢琴音量"滑块没有调到最低</li>
+                    <li>尝试刷新页面重新加载</li>
+                    <li>检查浏览器是否允许自动播放音频</li>
+                    <li>尝试切换不同的音色模式</li>
+                </ol>
+                <div class="tip">提示：某些浏览器需要用户交互后才能播放音频，请先点击页面任意位置。</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">8. 如何获得技术支持？</div>
+            <div class="faq-answer">
+                <p>技术支持渠道：</p>
+                <ul>
+                    <li><strong>反馈表单：</strong>通过页面底部的"反馈与建议"链接提交问题</li>
+                    <li><strong>微信联系：</strong>合作联系微信号：pzhhh6666</li>
+                    <li><strong>邮件支持：</strong>发送邮件至 support@qingsongpiano.com</li>
+                </ul>
+                <p>反馈问题时请提供：</p>
+                <ul>
+                    <li>设备型号和操作系统版本</li>
+                    <li>使用的浏览器及版本</li>
+                    <li>问题的详细描述和重现步骤</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="faq-section">
+        <h2>政策类问题</h2>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">9. 青松口袋钢琴收费吗？</div>
+            <div class="faq-answer">
+                <p><strong>青松口袋钢琴完全免费！</strong></p>
+                <p>我们承诺：</p>
+                <ul>
+                    <li>无任何收费项目</li>
+                    <li>无广告干扰</li>
+                    <li>无内购要求</li>
+                    <li>所有功能对所有用户开放</li>
+                </ul>
+                <div class="tip">提示：青松口袋钢琴由独立开发者维护，您的支持就是我们继续改进的动力。</div>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">10. 隐私政策是什么？</div>
+            <div class="faq-answer">
+                <p>青松口袋钢琴高度重视用户隐私：</p>
+                <ul>
+                    <li>您的音频数据仅在设备本地处理，不会上传</li>
+                    <li>我们只收集必要的技术信息用于服务优化</li>
+                    <li>详细内容请参阅<a href="privacy.html">隐私政策</a>页面</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)">11. 数据存储在哪里？</div>
+            <div class="faq-answer">
+                <p>数据存储说明：</p>
+                <ul>
+                    <li><strong>音频数据：</strong>仅在您的设备内存中临时处理，不会存储</li>
+                    <li><strong>用户设置：</strong>存储在浏览器的本地存储中</li>
+                    <li><strong>使用统计：</strong>匿名化的统计数据用于产品改进</li>
+                </ul>
+                <div class="tip">提示：青松口袋钢琴是一个纯前端应用，您的数据安全由您自己掌控。</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            const answer = element.nextElementSibling;
+            const isActive = answer.classList.contains('active');
+
+            // 关闭所有其他答案
+            document.querySelectorAll('.faq-answer.active').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // 切换当前答案
+            if (!isActive) {
+                answer.classList.add('active');
+            } else {
+                answer.classList.remove('active');
+            }
+        }
+
+        // 默认展开第一个问题
+        document.addEventListener('DOMContentLoaded', function () {
+            const firstQuestion = document.querySelector('.faq-question');
+            if (firstQuestion) {
+                firstQuestion.click();
+            }
+        });
+    </script>
+
+    <a href="index.html" class="back-btn">返回首页</a>
+</body>
+
+</html>
