@@ -47,7 +47,7 @@ class LoaderManager {
     }
 
     // // 加载入场音效
-    // const introSound = new Audio('audio/welcome.mp3');
+    // const introSound = new Audio('https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/welcome.mp3');
     // // 播放音效
     // introSound.play().catch(e => console.error('入场效播放失败:', e));
 

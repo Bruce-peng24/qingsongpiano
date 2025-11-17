@@ -9,7 +9,7 @@ class PianoApp {
    */
   constructor() {
     // 全局音效对象
-    this.buttonSound = new Audio('audio/button.mp3');  // 声明按钮点击音效
+    this.buttonSound = new Audio('https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/button.mp3');  // 声明按钮点击音效
 
     // 加强的单例检查
     if (window.pianoAppInstance) {

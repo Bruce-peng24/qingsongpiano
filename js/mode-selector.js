@@ -12,7 +12,7 @@ class ModeSelector {
     this.app = appInstance;
     this.selectedMode = null; // 存储用户选择的音域模式
     this.isModeSelected = false; // 标记是否已完成音域选择
-    this.buttonSound = new Audio('audio/button.mp3');
+    this.buttonSound = new Audio('https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/button.mp3');
     console.info('ModeSelector: 创建音域选择器实例');
   }
 
@@ -44,7 +44,7 @@ class ModeSelector {
     const audioModeBtn = document.getElementById('audio-mode');
     const goldenModeBtn = document.getElementById('golden-mode');
     const oscillatorModeBtn = document.getElementById('oscillator-mode');
-    const welcomeSound = new Audio('audio/welcome.mp3');
+    const welcomeSound = new Audio('https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/welcome.mp3');
 
     if (audioModeBtn && goldenModeBtn && oscillatorModeBtn) {
       audioModeBtn.addEventListener('click', () => {

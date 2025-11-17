@@ -19,25 +19,25 @@ const NOTES = [
 
 // 精确的音符到音频文件映射
 const NOTES_MAP = {
-  '1': { file: '/audio/f4-b5/a01.mp3', start: 0, duration: 1.5 },
-  '2': { file: '/audio/f4-b5/a02.mp3', start: 0, duration: 1.5 },
-  '3': { file: '/audio/f4-b5/a03.mp3', start: 0, duration: 1.5 },
-  '4': { file: '/audio/f4-b5/a04.mp3', start: 0, duration: 1.5 },
-  '5': { file: '/audio/f4-b5/a05.mp3', start: 0, duration: 1.5 },
-  '6': { file: '/audio/f4-b5/a06.mp3', start: 0, duration: 1.5 },
-  '7': { file: '/audio/f4-b5/a07.mp3', start: 0, duration: 1.5 },
-  '8': { file: '/audio/f4-b5/a08.mp3', start: 0, duration: 1.5 },
-  '9': { file: '/audio/f4-b5/a09.mp3', start: 0, duration: 1.5 },
-  '10': { file: '/audio/f4-b5/a10.mp3', start: 0, duration: 1.5 },
-  '11': { file: '/audio/f4-b5/a11.mp3', start: 0, duration: 1.5 },
-  '12': { file: '/audio/f4-b5/a12.mp3', start: 0, duration: 1.5 },
-  '13': { file: '/audio/f4-b5/a13.mp3', start: 0, duration: 1.5 },
-  '14': { file: '/audio/f4-b5/a14.mp3', start: 0, duration: 1.5 },
-  '15': { file: '/audio/f4-b5/a15.mp3', start: 0, duration: 1.5 },
-  '16': { file: '/audio/f4-b5/a16.mp3', start: 0, duration: 1.5 },
-  '17': { file: '/audio/f4-b5/a17.mp3', start: 0, duration: 1.5 },
-  '18': { file: '/audio/f4-b5/a18.mp3', start: 0, duration: 1.5 },
-  '19': { file: '/audio/f4-b5/a19.mp3', start: 0, duration: 1.5 }
+  '1': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a01.mp3', start: 0, duration: 1.5 },
+  '2': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a02.mp3', start: 0, duration: 1.5 },
+  '3': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a03.mp3', start: 0, duration: 1.5 },
+  '4': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a04.mp3', start: 0, duration: 1.5 },
+  '5': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a05.mp3', start: 0, duration: 1.5 },
+  '6': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a06.mp3', start: 0, duration: 1.5 },
+  '7': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a07.mp3', start: 0, duration: 1.5 },
+  '8': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a08.mp3', start: 0, duration: 1.5 },
+  '9': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a09.mp3', start: 0, duration: 1.5 },
+  '10': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a10.mp3', start: 0, duration: 1.5 },
+  '11': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a11.mp3', start: 0, duration: 1.5 },
+  '12': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a12.mp3', start: 0, duration: 1.5 },
+  '13': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a13.mp3', start: 0, duration: 1.5 },
+  '14': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a14.mp3', start: 0, duration: 1.5 },
+  '15': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a15.mp3', start: 0, duration: 1.5 },
+  '16': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a16.mp3', start: 0, duration: 1.5 },
+  '17': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a17.mp3', start: 0, duration: 1.5 },
+  '18': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a18.mp3', start: 0, duration: 1.5 },
+  '19': { file: 'https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/a19.mp3', start: 0, duration: 1.5 }
 };
 
 // 音频播放配置

@@ -12,7 +12,7 @@ class UIController {
   constructor(audioManager, pianoManager) {
     this.audioManager = audioManager;
     this.pianoManager = pianoManager;
-    this.buttonSound = new Audio('audio/button.mp3');
+    this.buttonSound = new Audio('https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/button.mp3');
     this.activeTouches = {};
 
     // 背景音乐相关属性

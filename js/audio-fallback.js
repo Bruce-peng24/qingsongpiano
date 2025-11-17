@@ -102,7 +102,7 @@ class FallbackAudioManager {
       // 将音符编号转换为音频文件名（例如：8 -> a08.mp3）
       const noteNumber = parseInt(note);
       const audioFileName = `a${noteNumber.toString().padStart(2, '0')}.mp3`;
-      const audioFilePath = `audio/f4-b5/${audioFileName}`;
+      const audioFilePath = `https://cdn.jsdelivr.net/gh/bruce-peng24/qingsongpiano@main/audio/f4-b5/${audioFileName}`;
       
       console.info(`FallbackAudioManager: 尝试加载音频文件 ${audioFilePath}`);
       
